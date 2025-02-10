@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent { // 코드가 시작되는 부분?
             AndroidPracticeTheme {
-                Surface( //속성 지정->꾸미기
+                /*Surface( //속성 지정->꾸미기
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column ( //수직으로 나열
@@ -44,15 +44,32 @@ class MainActivity : ComponentActivity() {
                         Spacer(Modifier.width(16.dp)) //띄어쓰기
                         Text("World")
                     }
+                } */
+                //Box특: 안에 있는 자식들이 다 겹쳐보임
+                Box(modifier = Modifier.background(color = Color.Green)
+                    .fillMaxWidth() //가로로 형광펜 쫙
+                    //.fillMaxHeight() //세로로 형광펜 쫙
+                    //.fillMaxSize() //전체 칠하기
+                    .height(200.dp),
+                    contentAlignment = Alignment.TopEnd //글씨 옮기기
+                ) {
+                    Text("Hello")
+                    Box( //Box안의 Box 마트료시카 가능
+                        modifier = Modifier.fillMaxSize()
+                            .padding(16.dp),
+                        contentAlignment = Alignment.BottomEnd
+                    ) {
+                        Text("World")
+                    }
                 }
             }
         }
     }
 }
 
-@Preview
+@Preview //Preview: Split 미리보기로 볼 수 있음, 여러개 가능
 @Composable
-fun PreviewMainScreen() {
+fun PreviewMainScreen() { //Composable 에서는 함수가 대문자로 시작
     AndroidPracticeTheme {
         Surface(
             modifier = Modifier.fillMaxSize(),
