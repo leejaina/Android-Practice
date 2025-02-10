@@ -4,44 +4,61 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.androidpractice.ui.theme.AndroidPracticeTheme
+import androidx.compose.foundation.layout.*
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
+        setContent { // 코드가 시작되는 부분?
             AndroidPracticeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                Surface( //속성 지정->꾸미기
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    Column ( //수직으로 나열
+                        modifier=Modifier //modifier가 대충 속성 대장?
+                            .fillMaxSize()
+                            .background(color= Color.Blue)
+                            .padding(16.dp), //패딩이 뭐야?
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.SpaceBetween
+                        //.aaa.bbb 차례대로 실행되므로 순서 주의!
+                    ){ //(괄호 안) 컨텐츠
+                        Text("Hello")
+                        Text("World")
+                    }
+                    Row ( //수평으로 나열
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        Text("Hello")
+                        Spacer(Modifier.width(16.dp)) //띄어쓰기
+                        Text("World")
+                    }
                 }
             }
         }
     }
 }
 
+@Preview
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
+fun PreviewMainScreen() {
     AndroidPracticeTheme {
-        Greeting("Android")
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Text("Hello")
+        }
     }
-} //하하하
+}
