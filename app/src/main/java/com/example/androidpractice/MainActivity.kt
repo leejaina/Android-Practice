@@ -20,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent { // 코드가 시작되는 부분?
             AndroidPracticeTheme {
-                /*Surface( //속성 지정->꾸미기
+                Surface( //속성 지정->꾸미기
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Column ( //수직으로 나열
@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                         Spacer(Modifier.width(16.dp)) //띄어쓰기
                         Text("World")
                     }
-                } */
+                }
                 //Box특: 안에 있는 자식들이 다 겹쳐보임
                 Box(modifier = Modifier.background(color = Color.Green)
                     .fillMaxWidth() //가로로 형광펜 쫙
