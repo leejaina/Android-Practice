@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
@@ -32,10 +33,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.modifier.modifierLocalMapOf
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.androidpractice.R
 
-class Lecture5Activity:ComponentActivity() {
+class Lecture5Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -44,16 +46,17 @@ class Lecture5Activity:ComponentActivity() {
                 mutableStateOf(false)
             }
             ImageCard(
+                //부모
                 modifier = Modifier
-                    .fillMaxSize(0.5f)
+                    .height(300.dp)
+                    .width(300.dp)
                     .padding(16.dp),
-                isFavorite=isFavorite,
-            ) {
-                favorite->
-                isFavorite=favorite
+                isFavorite = isFavorite,
+            ) { favorite ->
+                isFavorite = favorite
             }
-            Button (onClick={finish()}) {
-                Text ("홈 ㄱㄱ")
+            Button(onClick = { finish() }) {
+                Text("홈 ㄱㄱ")
             }
         }
     }
@@ -61,26 +64,29 @@ class Lecture5Activity:ComponentActivity() {
 
 @Composable //컴포져블로 만들어서 쓸거에염 -> 카드 형식 언제라도 재활용 ㄱㄴ
 fun ImageCard(
-    modifier: Modifier=Modifier,
-    isFavorite:Boolean,
-    onTabFavorite:(Boolean) -> Unit,
+    modifier: Modifier = Modifier,
+    isFavorite: Boolean,
+    onTabFavorite: (Boolean) -> Unit,
 ) {
     Card(
         modifier = modifier,
         shape = RoundedCornerShape(8.dp), //둥근 모서리~
         elevation = CardDefaults.cardElevation(defaultElevation = 5.dp) //그림자
     ) {
-        Box( //이미지가 들어갈 박스. 이미지는 'drawble' 폴더에 넣어두자.
+        Box(
+            //이미지가 들어갈 박스. 이미지는 'drawble' 폴더에 넣어두자.
             modifier = Modifier
-                .height(200.dp)
+                .height(300.dp)
                 .background(Color.Transparent),
         ) {
             Image(
-                painter= painterResource(id=R.drawable.facility01), //이미지 파일 표시 -> 페인터
-                contentDescription="facility pic", //컨텐츠 설명 필수!
-                contentScale= ContentScale.Crop,
+                painter = painterResource(id = R.drawable.facility01), //이미지 파일 표시 -> 페인터
+                contentDescription = "facility pic", //컨텐츠 설명 필수!
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxSize()
             )
-            Box( //사진 박스와 같은 크기의 박스를 만들어서 우측 상단에 아이콘 배치하는 작전
+            Box(
+                //사진 박스와 같은 크기의 박스를 만들어서 우측 상단에 아이콘 배치하는 작전
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.TopEnd,
             ) {
@@ -97,5 +103,27 @@ fun ImageCard(
                 }
             }
         }
+    }
+}
+
+@Preview(
+    showBackground = true,
+    widthDp = 360,
+    heightDp = 800
+)
+@Composable
+private fun ImagecardPreView() {
+    var isFavorite by rememberSaveable() { //아이콘의 상태를 기억하는 변수
+        mutableStateOf(false)
+    }
+    ImageCard(
+        //부모
+        modifier = Modifier
+            .height(300.dp)
+            .width(300.dp)
+            .padding(16.dp),
+        isFavorite = isFavorite,
+    ) { favorite ->
+        isFavorite = favorite
     }
 }

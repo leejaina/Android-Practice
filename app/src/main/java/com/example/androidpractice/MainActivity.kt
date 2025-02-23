@@ -17,6 +17,7 @@ import androidx.compose.ui.unit.sp
 import com.example.androidpractice.jetpackCompose.lecture1to3.Lecture1to3Activity
 import com.example.androidpractice.jetpackCompose.lecture4.Lecture4Activity
 import com.example.androidpractice.jetpackCompose.lecture5.Lecture5Activity
+import com.example.androidpractice.jetpackCompose.lecture6.Lecture6Activity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,10 +58,18 @@ class MainActivity : ComponentActivity() {
             }) {
                 Text("5강: Image, Card, 상태")
             }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, Lecture6Activity::class.java))
+            }) {
+                Text("6강: Scaffold, TextField, Button, 구조분해, SnackBar, 코루틴 스코프")
+            }
         }
     }
 }
-
+//intent 말고 navigation 써보자
 class Lecture1to3Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,6 +93,18 @@ class Lecture5Activity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             LectureScreen("5강: Image, Card, 상태", this)
+        }
+    }
+}
+
+class Lecture6Activity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            LectureScreen(
+                "6강: Scaffold, TextField, Button, 구조분해, SnackBar, 코루틴 스코프",
+                this
+            )
         }
     }
 }
