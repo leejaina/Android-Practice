@@ -19,6 +19,7 @@ import com.example.androidpractice.jetpackCompose.lecture4.Lecture4Activity
 import com.example.androidpractice.jetpackCompose.lecture5.Lecture5Activity
 import com.example.androidpractice.jetpackCompose.lecture6.Lecture6Activity
 import com.example.androidpractice.jetpackCompose.lecture7.Lecture7Activity
+import com.example.androidpractice.jetpackCompose.lecture8.Lecture8Activity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -74,6 +75,14 @@ class MainActivity : ComponentActivity() {
                 startActivity(Intent(this@MainActivity, Lecture7Activity::class.java))
             }) {
                 Text("7강: Navigation")
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, Lecture8Activity::class.java))
+            }) {
+                Text("8강: ViewModel")
             }
         }
     }

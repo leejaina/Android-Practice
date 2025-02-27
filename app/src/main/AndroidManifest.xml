@@ -27,6 +27,7 @@
         <activity android:name=".jetpackCompose.lecture5.Lecture5Activity"/>
         <activity android:name=".jetpackCompose.lecture6.Lecture6Activity"/>
         <activity android:name=".jetpackCompose.lecture7.Lecture7Activity"/>
+        <activity android:name=".jetpackCompose.lecture8.Lecture8Activity"/>
     </application>
 
 </manifest>
