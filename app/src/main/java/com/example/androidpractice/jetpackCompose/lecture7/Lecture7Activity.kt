@@ -31,10 +31,10 @@ class Lecture7Activity : ComponentActivity() {
 
             NavHost(
                 navController = navController,
-                startDestination = "first"
+                startDestination = "first"  //첨 화면, 네비의 MainActivity 느낌
             ) {
                 composable("first") {
-                    FirstScreen(navController)
+                    FirstScreen(navController) //NavController -> 화면 이동
                 }
                 composable("second") {
                     SecondScreen(navController)
