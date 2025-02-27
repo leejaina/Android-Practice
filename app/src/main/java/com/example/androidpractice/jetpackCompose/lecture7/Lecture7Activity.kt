@@ -27,6 +27,10 @@ class Lecture7Activity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            Button(onClick = { finish() }) {
+                Text("홈 ㄱㄱ")
+            }
+
             val navController = rememberNavController()
 
             NavHost(
