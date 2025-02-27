@@ -29,7 +29,7 @@ class Lecture8Activity : ComponentActivity() {
                 Text("홈 ㄱㄱ")
             }
 
-            val viewModel = viewModel<MainViewModel>()
+            val viewModel = viewModel<MainViewModel>() //viewModel을 가져오너라
 
             Column(
                 modifier = Modifier.fillMaxSize(),
@@ -41,7 +41,7 @@ class Lecture8Activity : ComponentActivity() {
                     fontSize = 30.sp
                 )
                 Button(onClick = {
-                    viewModel.changeValue()
+                    viewModel.changeValue() //바꿔
                 }) {
                     Text("변경")
                 }
@@ -54,11 +54,11 @@ class MainViewModel : ViewModel() { //Activity ♡ lifespan
 //ViewModel은 컴포저블과 독립적 -> Activity 살아있는 동안에는 데이터 유지
 //->remember를 붙이지 않아도 됨
 
-    private val _data = mutableStateOf("Hello") //안에서는 데이터 제공
-    val data: State<String> = _data //외부에는 읽기전용으로 제공
+    private val _data = mutableStateOf("Hello") //내부에서 변경 ㄱㄴ
+    val data: State<String> = _data //외부에는 읽기만 ㄱㄴ
 
     fun changeValue() {
-        _data.value = "World"
+        _data.value = "World" //상태 변경
     }
 
 }
