@@ -60,5 +60,4 @@ class MainViewModel : ViewModel() { //Activity ♡ lifespan
     fun changeValue() {
         _data.value = "World" //상태 변경
     }
-
 }

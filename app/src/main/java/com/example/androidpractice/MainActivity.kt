@@ -20,6 +20,7 @@ import com.example.androidpractice.jetpackCompose.lecture5.Lecture5Activity
 import com.example.androidpractice.jetpackCompose.lecture6.Lecture6Activity
 import com.example.androidpractice.jetpackCompose.lecture7.Lecture7Activity
 import com.example.androidpractice.jetpackCompose.lecture8.Lecture8Activity
+import com.example.androidpractice.jetpackCompose.lecture9.Lecture9Activity
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -133,6 +134,30 @@ class Lecture7Activity : ComponentActivity() {
         setContent {
             LectureScreen(
                 "7강: Navigation",
+                this
+            )
+        }
+    }
+}
+
+class Lecture8Activity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            LectureScreen(
+                "8강: ViewModel",
+                this
+            )
+        }
+    }
+}
+
+class Lecture9Activity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            LectureScreen(
+                "9강: State 심화",
                 this
             )
         }
