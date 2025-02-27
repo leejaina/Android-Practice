@@ -85,6 +85,14 @@ class MainActivity : ComponentActivity() {
             }) {
                 Text("8강: ViewModel")
             }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(onClick = {
+                startActivity(Intent(this@MainActivity, Lecture9Activity::class.java))
+            }) {
+                Text("9강: State 심화")
+            }
         }
     }
 }
